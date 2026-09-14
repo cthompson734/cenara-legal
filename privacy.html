@@ -72,7 +72,7 @@
   </a>
 </header>
 <h1>Cenara — Privacy Policy</h1>
-<p class="updated"><strong>Last updated: 11 September 2026</strong></p>
+<p class="updated"><strong>Last updated: 13 September 2026</strong></p>
 <hr>
 <h2>The short version</h2>
 <p>Cenara sends the photo you take to a server so an AI model can identify the ingredients in it. The photo is used for that one request and is never stored. Your ingredients, recipes, and shopping list live on your phone. There is no advertising, no tracking, and no analytics company involved.</p>
@@ -81,8 +81,12 @@
 <p><strong>Photos you scan.</strong> When you scan ingredients, the image is sent over HTTPS to Cenara's server, which passes it to Anthropic's Claude API to identify what is in it. The image is held in memory for the length of that request and is not written to disk, not placed in a database, and not retained after the response. Cenara's server records only the size of the image in bytes and the number of ingredients found.</p>
 <p><strong>Ingredient names, when you ask for recipes.</strong> The ingredients you confirmed, along with the preferences you have set — dietary requirements, allergies, serving size, units, maximum cooking time, and your spice rack — are sent so the model can write recipes that respect them. These are not stored on the server either.</p>
 <p><strong>An anonymous install identifier.</strong> On first launch Cenara generates a random identifier and keeps it in your device's Keychain. It is sent with each request so the server can apply usage limits fairly across users. It is not derived from your device, is not an advertising identifier, is not linked to your name, Apple ID, or email, and is meaningless to anyone but Cenara's own server.</p>
+<p>This is the one piece of data Cenara holds on to at all. The server counts your requests against the identifier for the rest of the day so that no single install can use up the service for everyone; the count is kept in memory, is cleared every day, and is never written to a disk or a database. It is declared in the App Store as Identifiers — Device ID, used for app functionality, not linked to you and not used for tracking.</p>
 <h2>What stays on your device</h2>
 <p>Your ingredient inventory, spice rack, generated and saved recipes, shopping list, scan history, and preferences are stored locally on your iPhone and are not transmitted anywhere. Deleting the app deletes them. Settings → Delete my data removes them without deleting the app.</p>
+<h2>Server logs</h2>
+<p>Cenara's own server records two things about a scan: how many bytes the image was, and how many ingredients were found in it. Nothing about the image itself, and nothing about what was in it.</p>
+<p>Separately, like any service reachable over the internet, the hosting platform (Google Cloud Run) writes standard request logs that include the IP address a request came from. These are kept for a limited period and used only to operate and protect the service. They are not linked to your identifier, and Cenara does not use them to build a picture of you.</p>
 <h2>Who else processes your data</h2>
 <p><strong>Anthropic</strong> receives your scan photos and ingredient lists in order to run the models that identify ingredients and write recipes. Anthropic's API terms state that inputs and outputs from commercial API traffic are not used to train their models. See <a href="https://www.anthropic.com/legal/commercial-terms">https://www.anthropic.com/legal/commercial-terms</a>.</p>
 <p><strong>Google Cloud</strong> hosts Cenara's server (Cloud Run, US region). Requests pass through their infrastructure in transit.</p>
@@ -97,7 +101,7 @@
 <h2>Security, honestly stated</h2>
 <p>Traffic between the app and the server is encrypted with HTTPS. The server is authenticated and rate limited. No system is perfectly secure, and Cenara is a small independent app rather than an organisation with a security team — weigh that when deciding what to photograph.</p>
 <h2>Changes</h2>
-<p>If the data flow changes — particularly if Cenara ever begins storing photos or your corrections to improve the app — this policy will be updated before that change ships, and the change will be described here rather than buried.</p>
+<p>If the data flow changes — particularly if Cenara ever begins storing photos, your corrections, or the contents of requests — this policy will be updated before that change ships, and the change will be described here rather than buried. That last one matters more than it sounds: the ingredients you send include any allergies you have entered, so logging request contents would mean recording health information, and Cenara does not do that.</p>
 <h2>Contact</h2>
 <p>chris.thompson899@gmail.com</p>
 <footer>
